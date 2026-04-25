@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0C1F3A; font-family: 'Inter', system-ui, sans-serif; padding: 20px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.token { background: #122845; border-radius: 4px; padding: 10px 12px; border: 1px solid rgba(201,160,85,0.12); display: flex; align-items: center; gap: 10px; }
+.dot { width: 28px; height: 28px; border-radius: 3px; flex-shrink: 0; }
+.token-name { font-size: 10px; font-weight: 600; color: #C9A055; text-transform: uppercase; letter-spacing: 0.1em; }
+.token-desc { font-size: 10px; color: hsl(215 16% 62%); margin-top: 2px; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="token"><div class="dot" style="background:#0C1F3A; border:1px solid rgba(255,255,255,0.1);"></div><div><div class="token-name">--bg</div><div class="token-desc">Primary background</div></div></div>
+  <div class="token"><div class="dot" style="background:#122845;"></div><div><div class="token-name">--bg-card</div><div class="token-desc">Card surface</div></div></div>
+  <div class="token"><div class="dot" style="background:#F5F0E8;"></div><div><div class="token-name">--bg-light</div><div class="token-desc">Light section bg</div></div></div>
+  <div class="token"><div class="dot" style="background:#C9A055;"></div><div><div class="token-name">--accent</div><div class="token-desc">CTAs, icons, headings</div></div></div>
+  <div class="token"><div class="dot" style="background:#D4B07A;"></div><div><div class="token-name">--accent-hover</div><div class="token-desc">Hover / lighter gold</div></div></div>
+  <div class="token"><div class="dot" style="background:hsl(40 20% 95%);"></div><div><div class="token-name">--fg</div><div class="token-desc">Text on dark</div></div></div>
+  <div class="token"><div class="dot" style="background:hsl(215 16% 62%);"></div><div><div class="token-name">--fg-muted</div><div class="token-desc">Secondary text on dark</div></div></div>
+  <div class="token"><div class="dot" style="background:#0C1F3A; border:1px solid rgba(255,255,255,0.1);"></div><div><div class="token-name">--fg-light</div><div class="token-desc">Text on light section</div></div></div>
+</div>
+</body></html>

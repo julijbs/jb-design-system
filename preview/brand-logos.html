@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0C1F3A; font-family:'Inter',system-ui,sans-serif; padding:24px 20px; display:flex; flex-direction:column; gap:24px; }
+.label { font-size:10px; color:hsl(215 16% 62%); letter-spacing:0.08em; text-transform:uppercase; margin-top:8px; }
+.on-light { background:#F5F0E8; padding:20px; border-radius:6px; display:flex; align-items:center; gap:16px; }
+</style></head>
+<body>
+  <!-- On dark -->
+  <div>
+    <img src="../assets/logo-horizontal-transparent.png" alt="Horizontal — on dark" style="height:44px;" />
+    <div class="label">Horizontal — on dark</div>
+  </div>
+  <div>
+    <img src="../assets/logo-stacked-transparent.png" alt="Stacked — on dark" style="height:72px;" />
+    <div class="label">Stacked — on dark</div>
+  </div>
+  <!-- On light -->
+  <div class="on-light">
+    <img src="../assets/logo-horizontal-transparent.png" alt="Horizontal — on light" style="height:36px;" />
+    <div class="label" style="color:#8B6E35;">Horizontal — on off-white</div>
+  </div>
+  <div class="on-light" style="flex-direction:column;align-items:flex-start;">
+    <img src="../assets/logo-stacked-transparent.png" alt="Stacked — on light" style="height:60px;" />
+    <div class="label" style="color:#8B6E35;">Stacked — on off-white</div>
+  </div>
+</body></html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+</style><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0C1F3A; font-family: 'Inter', system-ui, sans-serif; padding: 24px 20px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.meta { font-size: 10px; color: hsl(215 16% 62%); }
+button, a { font-family: 'Inter', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; }
+.divider { height: 1px; background: linear-gradient(90deg, transparent, hsl(43 53% 54% / 0.2), transparent); margin: 4px 0 14px; }
+</style></head>
+<body>
+<div class="row">
+  <button style="background:#C9A055;color:#0C1F3A;font-weight:500;font-size:0.875rem;padding:12px 28px;border-radius:6px;border:none;letter-spacing:0.04em;">Iniciar Sprint</button>
+  <div class="meta">btn-primary — gold fill</div>
+</div>
+<div class="divider"></div>
+<div class="row">
+  <button style="background:transparent;color:#C9A055;font-weight:500;font-size:0.875rem;padding:12px 28px;border-radius:6px;border:1px solid #C9A055;letter-spacing:0.04em;">Conhecer Serviços</button>
+  <div class="meta">btn-secondary — gold outline</div>
+</div>
+<div class="divider"></div>
+<div class="row">
+  <button style="background:transparent;color:hsl(215 16% 62%);font-weight:500;font-size:0.875rem;padding:12px 28px;border-radius:6px;border:1px solid hsl(212 25% 18%);letter-spacing:0.04em;">Saber Mais</button>
+  <div class="meta">btn-ghost — muted</div>
+</div>
+<div class="divider"></div>
+<div class="row">
+  <button style="background:#D4B07A;color:#0C1F3A;font-weight:500;font-size:0.875rem;padding:12px 28px;border-radius:6px;border:none;letter-spacing:0.04em;">Hover State</button>
+  <button style="background:hsl(40 45% 48%);color:#0C1F3A;font-weight:500;font-size:0.875rem;padding:12px 28px;border-radius:6px;border:none;letter-spacing:0.04em;">Active State</button>
+  <div class="meta">Interaction states</div>
+</div>
+</body></html>

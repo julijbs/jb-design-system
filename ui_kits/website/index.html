@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JB Digital Consulting — Website UI Kit</title>
+  <style>
+    @font-face { font-family:'DM Serif Display'; src:url('../../fonts/DMSerifDisplay-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+    @font-face { font-family:'DM Serif Display'; src:url('../../fonts/DMSerifDisplay-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+    @font-face { font-family:'Inter'; src:url('../../fonts/Inter-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Inter'; src:url('../../fonts/Inter-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Inter'; src:url('../../fonts/Inter-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #0C1F3A; color: hsl(40 20% 95%); font-family: 'Inter', system-ui, sans-serif; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0C1F3A; }
+    ::-webkit-scrollbar-thumb { background: hsl(43 53% 54% / 0.3); border-radius: 3px; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="Header.jsx"></script>
+<script type="text/babel" src="Hero.jsx"></script>
+<script type="text/babel" src="ServiceCard.jsx"></script>
+<script type="text/babel" src="PricingCard.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+
+<script type="text/babel">
+// ── Shared styles ──────────────────────────────────────
+const S = {
+  container: { maxWidth: 1200, margin: '0 auto', padding: '0 2rem' },
+  sectionDark: { background: '#0C1F3A', padding: '5rem 2rem' },
+  sectionLight: { background: '#F5F0E8', padding: '5rem 2rem' },
+  overline: {
+    fontFamily: 'Inter, system-ui, sans-serif',
+    fontSize: '0.7rem', fontWeight: 500,
+    letterSpacing: '0.12em', textTransform: 'uppercase',
+    color: '#C9A055', display: 'block', marginBottom: 14,
+  },
+  h2dark: {
+    fontFamily: '"DM Serif Display", Georgia, serif',
+    fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+    fontWeight: 400, color: 'hsl(40 20% 95%)',
+    lineHeight: 1.15, marginBottom: 16,
+  },
+  h2light: {
+    fontFamily: '"DM Serif Display", Georgia, serif',
+    fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+    fontWeight: 400, color: '#0C1F3A',
+    lineHeight: 1.15, marginBottom: 16,
+  },
+  subDark: {
+    fontFamily: 'Inter, system-ui, sans-serif',
+    fontSize: '1rem', color: 'hsl(215 16% 62%)',
+    lineHeight: 1.6, maxWidth: 520, marginBottom: 48,
+  },
+  subLight: {
+    fontFamily: 'Inter, system-ui, sans-serif',
+    fontSize: '1rem', color: 'hsl(212 30% 30%)',
+    lineHeight: 1.6, maxWidth: 520, marginBottom: 48,
+  },
+  divider: {
+    height: 1,
+    background: 'linear-gradient(90deg, transparent, hsl(43 53% 54% / 0.2), transparent)',
+    border: 'none', margin: 0,
+  },
+};
+
+// ── Lucide icon re-render helper ───────────────────────
+function useLucide() {
+  React.useEffect(() => {
+    if (window.lucide) window.lucide.createIcons();
+  });
+}
+
+// ── Screens ────────────────────────────────────────────
+
+// HOME
+const HomeScreen = ({ onNav }) => {
+  useLucide();
+  const services = [
+    { icon: 'zap', overline: 'Sprint de 5 dias', title: 'JB AI Decision Sprint™', description: 'Arquitetura de decisão com IA para empresas que precisam de clareza estratégica sem amadorismo. Entrega em 5 dias. Valor fixo: R$ 12.000.', cta: 'Ver Sprint', screen: 'sprint' },
+    { icon: 'layers', overline: 'Infraestrutura digital', title: 'JB Digital System', description: 'Site de autoridade + Google Business Profile otimizado + posicionamento executivo. Presença completa e coerente para profissionais liberais.', cta: 'Ver Sistema', screen: 'servicos' },
+    { icon: 'trending-up', overline: 'Receita recorrente', title: 'ARC™', description: 'Sistema de funil e receita recorrente para consultores. Captura, qualificação e fechamento — arquitetado para alto ticket.', cta: 'Ver ARC™', screen: 'servicos' },
+    { icon: 'star', overline: 'Autoridade social', title: 'Protocolo Autoridade', description: 'Packs mensais de conteúdo executivo para Instagram. Estratégia de posicionamento de alto valor sem produção própria.', cta: 'Ver Planos', screen: 'protocolo' },
+  ];
+
+  return (
+    <div>
+      <Hero onNav={onNav} />
+
+      {/* Divider */}
+      <hr style={S.divider} />
+
+      {/* Diferenciais */}
+      <section style={S.sectionDark}>
+        <div style={S.container}>
+          <span style={S.overline}>Por que JB Digital</span>
+          <h2 style={S.h2dark}>Não somos uma agência.<br />Somos arquitetos de presença.</h2>
+          <p style={S.subDark}>Cada produto foi desenhado para um tipo específico de problema digital. Sem pacotes genéricos, sem promessas vazias.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+            {services.map((s, i) => (
+              <ServiceCard key={i} {...s} onClick={() => onNav(s.screen)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* Social proof strip */}
+      <section style={{ ...S.sectionLight }}>
+        <div style={{ ...S.container, textAlign: 'center' }}>
+          <span style={{ ...S.overline, color: '#8B6E35' }}>Metodologia</span>
+          <h2 style={S.h2light}>Três pilares. Um sistema.</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32, marginTop: 40 }}>
+            {[
+              { num: '01', title: 'Diagnóstico', body: 'Mapeamos o ecossistema digital atual: presença, autoridade, e pontos cegos estratégicos.' },
+              { num: '02', title: 'Arquitetura', body: 'Projetamos a infraestrutura certa para o perfil e objetivo do cliente — sem excesso, sem lacunas.' },
+              { num: '03', title: 'Execução', body: 'Implementação com supervisão direta. Entregáveis concretos. Prazo definido.' },
+            ].map((item, i) => (
+              <div key={i} style={{ textAlign: 'left' }}>
+                <div style={{
+                  fontFamily: '"DM Serif Display", Georgia, serif',
+                  fontSize: '3rem', fontWeight: 400,
+                  color: 'hsl(43 53% 54% / 0.2)',
+                  lineHeight: 1, marginBottom: 12,
+                }}>{item.num}</div>
+                <h3 style={{
+                  fontFamily: '"DM Serif Display", Georgia, serif',
+                  fontSize: '1.25rem', color: '#0C1F3A',
+                  marginBottom: 10,
+                }}>{item.title}</h3>
+                <p style={{
+                  fontFamily: 'Inter, system-ui, sans-serif',
+                  fontSize: '0.875rem', color: 'hsl(212 30% 35%)',
+                  lineHeight: 1.6,
+                }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <hr style={S.divider} />
+
+      {/* CTA Band */}
+      <section style={{ background: '#0C1F3A', padding: '4rem 2rem', textAlign: 'center' }}>
+        <div style={{ maxWidth: 580, margin: '0 auto' }}>
+          <h2 style={{ ...S.h2dark, marginBottom: 12 }}>Pronto para construir sua autoridade digital?</h2>
+          <p style={{ ...S.subDark, margin: '0 auto 32px' }}>Agende uma conversa direta. Sem formulários longos, sem espera.</p>
+          <button onClick={() => onNav('protocolo')} style={{
+            background: '#C9A055', color: '#0C1F3A',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            fontWeight: 500, fontSize: '0.875rem',
+            padding: '14px 36px', borderRadius: 6, border: 'none',
+            cursor: 'pointer', letterSpacing: '0.05em',
+          }}>Iniciar Conversa</button>
+        </div>
+      </section>
+
+      <Footer onNav={onNav} />
+    </div>
+  );
+};
+
+// SERVIÇOS
+const ServicosScreen = ({ onNav }) => {
+  useLucide();
+  const items = [
+    { icon: 'zap', overline: 'Sprint · R$ 12.000', title: 'JB AI Decision Sprint™', description: 'Diagnóstico completo do ecossistema digital + arquitetura de decisão com IA. Entrega em 5 dias úteis. Valor fixo, sem surpresas.', cta: 'Ver Detalhes', screen: 'sprint' },
+    { icon: 'globe', overline: 'Presença Google', title: 'Presença Google Essencial', description: 'Site de autoridade + Google Business Profile otimizado para aparecer quando o cliente certo procura. SEO local focado em conversão.', cta: 'Ver Serviço', screen: 'protocolo' },
+    { icon: 'star', overline: 'Social Media', title: 'Protocolo Autoridade', description: 'Packs mensais de conteúdo executivo para Instagram. Arte + legenda + estratégia. Você posta. Nós arquitetamos.', cta: 'Ver Planos', screen: 'protocolo' },
+    { icon: 'trending-up', overline: 'Funil · Recorrente', title: 'ARC™', description: 'Sistema de receita recorrente para consultores e profissionais. Funil completo: captação → qualificação → fechamento de alto ticket.', cta: 'Ver ARC™', screen: 'arc' },
+    { icon: 'layers', overline: 'Sistema completo', title: 'JB Digital System', description: 'O pacote completo: site + Google + redes + posicionamento + supervisão estratégica contínua. Para quem quer delegar com segurança.', cta: 'Saber Mais', screen: 'whatsapp' },
+  ];
+  return (
+    <div>
+      <section style={{ background: '#0C1F3A', padding: '5rem 2rem 3rem', textAlign: 'center' }}>
+        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+          <span style={S.overline}>Portfólio de Serviços</span>
+          <h1 style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 400, color: 'hsl(40 20% 95%)', lineHeight: 1.15, marginBottom: 16 }}>
+            Cada serviço resolve um problema específico.
+          </h1>
+          <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1rem', color: 'hsl(215 16% 62%)', lineHeight: 1.6 }}>
+            Não existe pacote universal. Escolha o que resolve o seu problema agora.
+          </p>
+        </div>
+      </section>
+      <hr style={S.divider} />
+      <section style={S.sectionDark}>
+        <div style={S.container}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+            {items.map((s, i) => <ServiceCard key={i} {...s} onClick={() => onNav(s.screen)} />)}
+          </div>
+        </div>
+      </section>
+      <Footer onNav={onNav} />
+    </div>
+  );
+};
+
+// PROTOCOLO AUTORIDADE
+const ProtocoloScreen = ({ onNav }) => {
+  useLucide();
+  const plans = [
+    {
+      title: 'Manutenção', price: 'R$ 600', period: '/mês',
+      description: 'Para manter o perfil ativo e profissional.',
+      features: ['12 posts por mês (Arte + Legenda)', '3 publicações por semana', 'Design executivo', 'Entrega via Google Drive'],
+      cta: 'Iniciar Manutenção',
+    },
+    {
+      featured: true, badge: 'Recomendado',
+      title: 'Crescimento', price: 'R$ 900', period: '/mês',
+      description: 'Para atrair clientes de alto valor.',
+      features: ['20 posts por mês (Arte + Legenda)', '5 publicações por semana (Seg–Sex)', 'Estratégia de Autoridade inclusa', 'Hashtags e posicionamento estratégico'],
+      cta: 'Iniciar Crescimento',
+    },
+    {
+      title: 'Intensivo', price: 'R$ 1.200', period: '/mês',
+      description: 'Para se tornar referência no nicho.',
+      features: ['30 posts (Feed Diário)', '5 Templates de Stories', 'Organização de Destaques', 'Posicionamento premium completo'],
+      cta: 'Iniciar Intensivo',
+    },
+  ];
+  return (
+    <div>
+      {/* Hero */}
+      <section style={{ background: '#0C1F3A', padding: '5rem 2rem 3rem', textAlign: 'center' }}>
+        <div style={{ maxWidth: 660, margin: '0 auto' }}>
+          <span style={S.overline}>Posicionamento Executivo</span>
+          <h1 style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 400, color: 'hsl(40 20% 95%)', lineHeight: 1.15, marginBottom: 20 }}>
+            Sua autoridade profissional merece uma{' '}
+            <span style={{ color: '#C9A055' }}>presença digital à altura.</span>
+          </h1>
+          <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '1rem', color: 'hsl(215 16% 62%)', lineHeight: 1.6, marginBottom: 32 }}>
+            O protocolo definitivo para profissionais que buscam clientes qualificados — sem perder tempo com marketing amador.
+          </p>
+          <button style={{ background: '#C9A055', color: '#0C1F3A', fontFamily: 'Inter, system-ui, sans-serif', fontWeight: 500, fontSize: '0.875rem', padding: '13px 32px', borderRadius: 6, border: 'none', cursor: 'pointer', letterSpacing: '0.04em' }}>
+            Ver Planos
+          </button>
+        </div>
+      </section>
+      <hr style={S.divider} />
+
+      {/* Pain */}
+      <section style={S.sectionLight}>
+        <div style={S.container}>
+          <span style={{ ...S.overline, color: '#8B6E35' }}>Diagnóstico</span>
+          <h2 style={S.h2light}>Por que seu perfil não converte?</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20 }}>
+            {[
+              { title: 'Amadorismo digital', body: 'Seu feed não reflete a excelência do seu trabalho, afastando clientes qualificados.' },
+              { title: 'Esforço sem retorno', body: 'Você gasta energia criando conteúdo que gera curtidas, mas não gera pedidos de proposta.' },
+              { title: 'Invisibilidade', body: 'Sem constância estratégica, você é esquecido quando o cliente ideal está decidindo.' },
+            ].map((item, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid hsl(212 20% 85%)', borderRadius: 10, padding: '24px 20px' }}>
+                <h3 style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontSize: '1.1rem', color: '#0C1F3A', marginBottom: 10 }}>{item.title}</h3>
+                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.875rem', color: 'hsl(212 20% 35%)', lineHeight: 1.6 }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <hr style={S.divider} />
+
+      {/* How it works */}
+      <section style={S.sectionDark}>
+        <div style={{ ...S.container, textAlign: 'center' }}>
+          <span style={S.overline}>Metodologia</span>
+          <h2 style={{ ...S.h2dark, marginBottom: 48 }}>Como funciona</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
+            {[
+              { n: '01', t: 'Alinhamento', d: 'Mapeamos seu diferencial, tom de voz e o perfil do seu cliente ideal.' },
+              { n: '02', t: 'Estratégia', d: 'Criamos a linha editorial, roteiros persuasivos e o design do mês.' },
+              { n: '03', t: 'Execução', d: 'Você recebe o material pronto. É só publicar.' },
+            ].map((s, i) => (
+              <div key={i} style={{ textAlign: 'left' }}>
+                <div style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontSize: '3rem', color: 'hsl(43 53% 54% / 0.18)', lineHeight: 1, marginBottom: 12 }}>{s.n}</div>
+                <h3 style={{ fontFamily: '"DM Serif Display", Georgia, serif', fontSize: '1.2rem', color: '#C9A055', marginBottom: 10 }}>{s.t}</h3>
+                <p style={{ fontFamily: 'Inter, system-ui, sans-serif', fontSize: '0.875rem', color: 'hsl(215 16% 62%)', lineHeight: 1.6 }}>{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <hr style={S.divider} />
+
+      {/* Pricing */}
+      <section style={S.sectionLight}>
+        <div style={{ ...S.container, textAlign: 'center' }}>
+          <span style={{ ...S.overline, color: '#8B6E35' }}>Planos</span>
+          <h2 style={{ ...S.h2light, marginBottom: 8 }}>Escolha seu nível</h2>
+          <p style={{ ...S.subLight, margin: '0 auto 48px' }}>Estratégias para cada estágio da sua presença digital.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, alignItems: 'start' }}>
+            {plans.map((p, i) => <PricingCard key={i} {...p} onCta={() => {}} />)}
+          </div>
+        </div>
+      </section>
+
+      <Footer onNav={onNav} />
+    </div>
+  );
+};
+
+// ── Shared section helpers ─────────────────────────────
+const Divider = () => <hr style={{ height:1, background:'linear-gradient(90deg,transparent,hsl(43 53% 54% / 0.2),transparent)', border:'none', margin:0 }} />;
+
+const SectionDark = ({ children, style }) => (
+  <section style={{ background:'#0C1F3A', padding:'5rem 2rem', ...style }}>{children}</section>
+);
+const SectionLight = ({ children, style }) => (
+  <section style={{ background:'#F5F0E8', padding:'5rem 2rem', ...style }}>{children}</section>
+);
+const Container = ({ children, center }) => (
+  <div style={{ maxWidth:1100, margin:'0 auto', textAlign: center ? 'center' : undefined }}>{children}</div>
+);
+
+// ── SPRINT™ SCREEN ─────────────────────────────────────
+const SprintScreen = ({ onNav }) => {
+  useLucide();
+  const deliverables = [
+    { icon: 'map', label: 'Mapa de Decisão', desc: 'Diagnóstico completo do ecossistema digital atual — lacunas, oportunidades e prioridades.' },
+    { icon: 'cpu', label: 'Arquitetura de IA', desc: 'Fluxo de decisão com IA aplicado ao contexto da empresa. Ferramentas e prompts prontos para uso.' },
+    { icon: 'file-text', label: 'Relatório Executivo', desc: 'Documento de 10–15 páginas com análise, estratégia e próximos passos concretos.' },
+    { icon: 'calendar', label: 'Sessão de Alinhamento', desc: 'Call final de 90 minutos para apresentação dos resultados e alinhamento de implementação.' },
+  ];
+  const isNot = [
+    'Não é consultoria ongoing',
+    'Não é implementação técnica',
+    'Não é treinamento de equipe',
+    'Não é relatório genérico de mercado',
+  ];
+  const is = [
+    'Diagnóstico preciso do seu contexto',
+    'Decisão arquitetada com IA',
+    'Entregáveis concretos em 5 dias',
+    'Clareza para agir — sem dependência',
+  ];
+
+  return (
+    <div>
+      {/* Hero */}
+      <SectionDark style={{ padding:'6rem 2rem 5rem', textAlign:'center' }}>
+        <Container center>
+          <span style={S.overline}>JB AI Decision Sprint™</span>
+          <h1 style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'clamp(2rem,4vw,3.2rem)', fontWeight:400, color:'hsl(40 20% 95%)', lineHeight:1.1, marginBottom:20, maxWidth:700, margin:'0 auto 20px', letterSpacing:'-0.02em' }}>
+            Cinco dias. Clareza estratégica.<br /><span style={{ color:'#C9A055' }}>Decisão arquitetada com IA.</span>
+          </h1>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'1.05rem', color:'hsl(215 16% 62%)', lineHeight:1.65, maxWidth:540, margin:'0 auto 36px' }}>
+            Para decisores que precisam de clareza antes de agir — sem consultoria vaga, sem relatórios que ninguém lê.
+          </p>
+          <div style={{ display:'flex', gap:12, justifyContent:'center', flexWrap:'wrap' }}>
+            <button onClick={() => onNav('whatsapp')} style={{ background:'#C9A055', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.875rem', padding:'14px 36px', borderRadius:6, border:'none', cursor:'pointer', letterSpacing:'0.04em' }}>
+              Iniciar Sprint — R$ 12.000
+            </button>
+            <button onClick={() => onNav('servicos')} style={{ background:'transparent', color:'#C9A055', fontFamily:'Inter,system-ui,sans-serif', fontWeight:500, fontSize:'0.875rem', padding:'14px 28px', borderRadius:6, border:'1px solid #C9A055', cursor:'pointer', letterSpacing:'0.04em' }}>
+              Ver Todos os Serviços
+            </button>
+          </div>
+        </Container>
+      </SectionDark>
+      <Divider />
+
+      {/* Is / Is Not */}
+      <SectionLight>
+        <Container>
+          <span style={{ ...S.overline, color:'#8B6E35' }}>Definição</span>
+          <h2 style={S.h2light}>O que é. O que não é.</h2>
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:32, marginTop:40 }}>
+            <div>
+              <div style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.7rem', fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase', color:'#8B6E35', marginBottom:16 }}>É</div>
+              <ul style={{ listStyle:'none' }}>
+                {is.map((item,i) => (
+                  <li key={i} style={{ display:'flex', alignItems:'flex-start', gap:10, marginBottom:14, fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.9rem', color:'#0C1F3A', lineHeight:1.5 }}>
+                    <i data-lucide="check" style={{ color:'#C9A055', width:16, height:16, strokeWidth:2, flexShrink:0, marginTop:2 }}></i>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.7rem', fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase', color:'hsl(215 16% 55%)', marginBottom:16 }}>Não é</div>
+              <ul style={{ listStyle:'none' }}>
+                {isNot.map((item,i) => (
+                  <li key={i} style={{ display:'flex', alignItems:'flex-start', gap:10, marginBottom:14, fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.9rem', color:'hsl(212 20% 45%)', lineHeight:1.5 }}>
+                    <i data-lucide="x" style={{ color:'hsl(215 16% 55%)', width:16, height:16, strokeWidth:2, flexShrink:0, marginTop:2 }}></i>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </SectionLight>
+      <Divider />
+
+      {/* Deliverables */}
+      <SectionDark>
+        <Container>
+          <span style={S.overline}>Entregáveis</span>
+          <h2 style={{ ...S.h2dark, marginBottom:40 }}>O que você recebe</h2>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:16 }}>
+            {deliverables.map((d,i) => (
+              <div key={i} style={{ background:'hsl(212 45% 13% / 0.6)', backdropFilter:'blur(20px)', border:'1px solid hsl(43 53% 54% / 0.12)', borderTop:'2px solid #C9A055', borderRadius:12, padding:'24px 20px' }}>
+                <div style={{ width:36, height:36, background:'hsl(43 53% 54% / 0.1)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:14 }}>
+                  <i data-lucide={d.icon} style={{ color:'#C9A055', width:18, height:18, strokeWidth:1.5 }}></i>
+                </div>
+                <h3 style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'1.1rem', color:'hsl(40 20% 95%)', marginBottom:8 }}>{d.label}</h3>
+                <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.8rem', color:'hsl(215 16% 62%)', lineHeight:1.6 }}>{d.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </SectionDark>
+      <Divider />
+
+      {/* Price anchor + CTA */}
+      <SectionLight style={{ textAlign:'center' }}>
+        <Container center>
+          <span style={{ ...S.overline, color:'#8B6E35' }}>Investimento</span>
+          <div style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'clamp(2.5rem,5vw,4rem)', color:'#0C1F3A', lineHeight:1, marginBottom:8 }}>R$ 12.000</div>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'hsl(212 20% 45%)', marginBottom:8 }}>Valor fixo. Pagamento único. Sem surpresas.</p>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'hsl(212 20% 45%)', marginBottom:36 }}>Entrega em 5 dias úteis após alinhamento inicial.</p>
+          <button onClick={() => onNav('whatsapp')} style={{ background:'#C9A055', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.9rem', padding:'15px 40px', borderRadius:6, border:'none', cursor:'pointer', letterSpacing:'0.04em' }}>
+            Iniciar Sprint
+          </button>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.75rem', color:'hsl(212 20% 55%)', marginTop:14 }}>Vagas limitadas. Atendimento direto com JB.</p>
+        </Container>
+      </SectionLight>
+
+      <Footer onNav={onNav} />
+    </div>
+  );
+};
+
+// ── WHATSAPP LEAD FLOW ─────────────────────────────────
+const WhatsAppScreen = ({ onNav }) => {
+  const [step, setStep] = React.useState(1);
+  const [form, setForm] = React.useState({ name:'', company:'', challenge:'' });
+
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+
+  const inputStyle = {
+    width:'100%', background:'#122845',
+    border:'1px solid hsl(43 53% 54% / 0.2)',
+    borderRadius:6, padding:'12px 16px',
+    fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.9rem',
+    color:'hsl(40 20% 95%)', outline:'none',
+    transition:'border-color 0.2s',
+  };
+  const labelStyle = {
+    fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.7rem',
+    fontWeight:500, letterSpacing:'0.1em', textTransform:'uppercase',
+    color:'#C9A055', display:'block', marginBottom:8,
+  };
+
+  const handleSubmit = () => {
+    const msg = encodeURIComponent(`Olá, JB. Meu nome é ${form.name}, da empresa ${form.company}. Meu principal desafio: ${form.challenge}. Gostaria de conversar sobre o Sprint™.`);
+    window.open(`https://wa.me/5521980990577?text=${msg}`, '_blank');
+    setStep(3);
+  };
+
+  return (
+    <div style={{ minHeight:'80vh', display:'flex', flexDirection:'column', justifyContent:'center' }}>
+      <SectionDark style={{ flex:1, display:'flex', alignItems:'center', padding:'5rem 2rem' }}>
+        <Container center>
+          {step === 1 && (
+            <div style={{ maxWidth:480, margin:'0 auto' }}>
+              <span style={S.overline}>Iniciar Sprint™</span>
+              <h2 style={{ ...S.h2dark, marginBottom:12 }}>Antes de conversar,<br />duas informações.</h2>
+              <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'hsl(215 16% 62%)', marginBottom:40, lineHeight:1.6 }}>Para que a conversa seja direta e objetiva.</p>
+              <div style={{ display:'flex', flexDirection:'column', gap:20, textAlign:'left' }}>
+                <div>
+                  <label style={labelStyle}>Seu nome</label>
+                  <input style={inputStyle} placeholder="João Bernardo" value={form.name} onChange={e => set('name', e.target.value)} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Empresa ou projeto</label>
+                  <input style={inputStyle} placeholder="Nome da empresa" value={form.company} onChange={e => set('company', e.target.value)} />
+                </div>
+              </div>
+              <button
+                disabled={!form.name || !form.company}
+                onClick={() => setStep(2)}
+                style={{ marginTop:32, background: form.name && form.company ? '#C9A055' : 'hsl(43 53% 54% / 0.3)', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.875rem', padding:'13px 36px', borderRadius:6, border:'none', cursor: form.name && form.company ? 'pointer' : 'not-allowed', letterSpacing:'0.04em', width:'100%' }}>
+                Continuar →
+              </button>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div style={{ maxWidth:480, margin:'0 auto' }}>
+              <span style={S.overline}>Último passo</span>
+              <h2 style={{ ...S.h2dark, marginBottom:12 }}>Qual é o seu principal desafio digital agora?</h2>
+              <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'hsl(215 16% 62%)', marginBottom:32, lineHeight:1.6 }}>Seja específico. Isso orienta a conversa.</p>
+              <textarea
+                style={{ ...inputStyle, minHeight:120, resize:'vertical', lineHeight:1.6 }}
+                placeholder="Ex: Não tenho clareza sobre quais ferramentas de IA usar no meu processo de decisão comercial..."
+                value={form.challenge}
+                onChange={e => set('challenge', e.target.value)}
+              />
+              <div style={{ display:'flex', gap:10, marginTop:24 }}>
+                <button onClick={() => setStep(1)} style={{ background:'transparent', color:'hsl(215 16% 62%)', fontFamily:'Inter,system-ui,sans-serif', fontWeight:500, fontSize:'0.875rem', padding:'13px 20px', borderRadius:6, border:'1px solid hsl(212 25% 18%)', cursor:'pointer', flex:'0 0 auto' }}>
+                  ← Voltar
+                </button>
+                <button
+                  disabled={!form.challenge}
+                  onClick={handleSubmit}
+                  style={{ background: form.challenge ? '#C9A055' : 'hsl(43 53% 54% / 0.3)', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.875rem', padding:'13px 24px', borderRadius:6, border:'none', cursor: form.challenge ? 'pointer' : 'not-allowed', letterSpacing:'0.04em', flex:1 }}>
+                  Ir para WhatsApp →
+                </button>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div style={{ maxWidth:420, margin:'0 auto' }}>
+              <div style={{ width:56, height:56, background:'hsl(43 53% 54% / 0.1)', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 24px' }}>
+                <i data-lucide="check" style={{ color:'#C9A055', width:28, height:28, strokeWidth:1.5 }}></i>
+              </div>
+              <h2 style={{ ...S.h2dark, marginBottom:12 }}>Mensagem enviada.</h2>
+              <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.9rem', color:'hsl(215 16% 62%)', lineHeight:1.6, marginBottom:32 }}>
+                O WhatsApp foi aberto com sua mensagem. JB responde em até 24 horas úteis.
+              </p>
+              <button onClick={() => onNav('home')} style={{ background:'transparent', color:'#C9A055', fontFamily:'Inter,system-ui,sans-serif', fontWeight:500, fontSize:'0.875rem', padding:'12px 28px', borderRadius:6, border:'1px solid #C9A055', cursor:'pointer', letterSpacing:'0.04em' }}>
+                Voltar ao início
+              </button>
+            </div>
+          )}
+        </Container>
+      </SectionDark>
+    </div>
+  );
+};
+
+// ── ARC™ SCREEN ────────────────────────────────────────
+const ArcScreen = ({ onNav }) => {
+  useLucide();
+  const pillars = [
+    { icon:'repeat', label:'Recorrência', desc:'Estrutura de oferta que gera previsibilidade de receita — sem depender de fechamentos novos todo mês.' },
+    { icon:'filter', label:'Qualificação', desc:'Sistema de captação e triagem que atrai o perfil certo e elimina os erros antes da venda.' },
+    { icon:'trending-up', label:'Escalonamento', desc:'Arquitetura que cresce sem aumentar proporcional de trabalho — processos, automação e oferta em camadas.' },
+  ];
+  const for_whom = [
+    'Consultores e prestadores de serviço com carteira de clientes ativa',
+    'Profissionais com audiência estabelecida mas sem sistema de monetização recorrente',
+    'Negócios que dependem de lançamentos ou prospecção ativa para fechar',
+    'Quem fatura, mas sem previsibilidade',
+  ];
+
+  return (
+    <div>
+      {/* Hero */}
+      <SectionDark style={{ padding:'6rem 2rem 5rem', textAlign:'center' }}>
+        <Container center>
+          <span style={S.overline}>ARC™ — Arquitetura de Receita Contínua</span>
+          <h1 style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'clamp(2rem,4vw,3.2rem)', fontWeight:400, color:'hsl(40 20% 95%)', lineHeight:1.1, marginBottom:20, maxWidth:680, margin:'0 auto 20px', letterSpacing:'-0.02em' }}>
+            Transforme seu conhecimento em<br /><span style={{ color:'#C9A055' }}>receita que chega todo mês.</span>
+          </h1>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'1.05rem', color:'hsl(215 16% 62%)', lineHeight:1.65, maxWidth:520, margin:'0 auto 36px' }}>
+            Para negócios com audiência existente que ainda não têm um sistema estruturado de receita recorrente.
+          </p>
+          <button onClick={() => onNav('whatsapp')} style={{ background:'#C9A055', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.875rem', padding:'14px 36px', borderRadius:6, border:'none', cursor:'pointer', letterSpacing:'0.04em' }}>
+            Conversar sobre ARC™
+          </button>
+        </Container>
+      </SectionDark>
+      <Divider />
+
+      {/* For whom */}
+      <SectionLight>
+        <Container>
+          <span style={{ ...S.overline, color:'#8B6E35' }}>Para quem é</span>
+          <h2 style={{ ...S.h2light, marginBottom:32 }}>Você se reconhece aqui?</h2>
+          <ul style={{ listStyle:'none', display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:16 }}>
+            {for_whom.map((item,i) => (
+              <li key={i} style={{ background:'#fff', border:'1px solid hsl(212 20% 85%)', borderRadius:10, padding:'20px 18px', display:'flex', gap:12, alignItems:'flex-start' }}>
+                <i data-lucide="check" style={{ color:'#C9A055', width:16, height:16, strokeWidth:2, flexShrink:0, marginTop:3 }}></i>
+                <span style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'#0C1F3A', lineHeight:1.6 }}>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </SectionLight>
+      <Divider />
+
+      {/* Three pillars */}
+      <SectionDark>
+        <Container>
+          <span style={S.overline}>Metodologia</span>
+          <h2 style={{ ...S.h2dark, marginBottom:40 }}>Os três pilares do ARC™</h2>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:16 }}>
+            {pillars.map((p,i) => (
+              <div key={i} style={{ background:'hsl(212 45% 13% / 0.6)', backdropFilter:'blur(20px)', border:'1px solid hsl(43 53% 54% / 0.12)', borderTop:'2px solid #C9A055', borderRadius:12, padding:'28px 22px' }}>
+                <div style={{ width:40, height:40, background:'hsl(43 53% 54% / 0.1)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', marginBottom:16 }}>
+                  <i data-lucide={p.icon} style={{ color:'#C9A055', width:20, height:20, strokeWidth:1.5 }}></i>
+                </div>
+                <h3 style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'1.2rem', color:'hsl(40 20% 95%)', marginBottom:10 }}>{p.label}</h3>
+                <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.85rem', color:'hsl(215 16% 62%)', lineHeight:1.6 }}>{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </SectionDark>
+      <Divider />
+
+      {/* Process */}
+      <SectionLight>
+        <Container>
+          <span style={{ ...S.overline, color:'#8B6E35' }}>Processo</span>
+          <h2 style={{ ...S.h2light, marginBottom:40 }}>Como funciona</h2>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:24 }}>
+            {[
+              { n:'01', t:'Diagnóstico', d:'Mapeamos a operação atual: oferta, público, canais e gargalos de receita.' },
+              { n:'02', t:'Arquitetura', d:'Desenhamos o modelo de oferta recorrente adequado ao seu perfil e mercado.' },
+              { n:'03', t:'Sistema', d:'Configuramos o funil, automações e materiais de captação e qualificação.' },
+              { n:'04', t:'Ativação', d:'Lançamos o sistema e acompanhamos os primeiros ciclos de conversão.' },
+            ].map((s,i) => (
+              <div key={i}>
+                <div style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'2.5rem', color:'hsl(43 53% 54% / 0.2)', lineHeight:1, marginBottom:10 }}>{s.n}</div>
+                <h3 style={{ fontFamily:'"DM Serif Display",Georgia,serif', fontSize:'1.1rem', color:'#0C1F3A', marginBottom:8 }}>{s.t}</h3>
+                <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.8rem', color:'hsl(212 20% 40%)', lineHeight:1.6 }}>{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </SectionLight>
+      <Divider />
+
+      {/* CTA */}
+      <SectionDark style={{ textAlign:'center', padding:'4rem 2rem' }}>
+        <Container center>
+          <h2 style={{ ...S.h2dark, marginBottom:12, maxWidth:520, margin:'0 auto 12px' }}>Pronto para construir receita que não depende de você todo mês?</h2>
+          <p style={{ fontFamily:'Inter,system-ui,sans-serif', fontSize:'0.875rem', color:'hsl(215 16% 62%)', marginBottom:32 }}>Conversa direta. Sem formulário longo. Sem compromisso.</p>
+          <button onClick={() => onNav('whatsapp')} style={{ background:'#C9A055', color:'#0C1F3A', fontFamily:'Inter,system-ui,sans-serif', fontWeight:600, fontSize:'0.9rem', padding:'14px 40px', borderRadius:6, border:'none', cursor:'pointer', letterSpacing:'0.04em' }}>
+            Conversar com JB
+          </button>
+        </Container>
+      </SectionDark>
+
+      <Footer onNav={onNav} />
+    </div>
+  );
+};
+
+// ── App shell ──────────────────────────────────────────
+const App = () => {
+  const [screen, setScreen] = React.useState('home');
+
+  const handleNav = (s) => {
+    setScreen(s);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  React.useEffect(() => {
+    if (window.lucide) window.lucide.createIcons();
+  }, [screen]);
+
+  const screens = {
+    home:      <HomeScreen onNav={handleNav} />,
+    servicos:  <ServicosScreen onNav={handleNav} />,
+    protocolo: <ProtocoloScreen onNav={handleNav} />,
+    sprint:    <SprintScreen onNav={handleNav} />,
+    arc:       <ArcScreen onNav={handleNav} />,
+    whatsapp:  <WhatsAppScreen onNav={handleNav} />,
+    sobre:     <HomeScreen onNav={handleNav} />,
+  };
+
+  return (
+    <div>
+      <Header onNav={handleNav} currentScreen={screen} />
+      {screens[screen] || screens.home}
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>

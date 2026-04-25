@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+</style><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0C1F3A; font-family: 'Inter', system-ui, sans-serif; padding: 20px; }
+.row { display: flex; flex-direction: column; gap: 8px; }
+.item { display: flex; align-items: center; gap: 12px; }
+.line { height: 1px; width: 100px; flex-shrink: 0; }
+.label { font-size: 10px; color: hsl(215 16% 62%); }
+.name { font-size: 10px; font-weight: 500; color: #C9A055; width: 180px; font-family: monospace; }
+.glow-demo { width: 100px; height: 28px; border-radius: 4px; background: #122845; flex-shrink: 0; }
+</style></head>
+<body>
+<div class="row">
+  <div class="item"><div class="line" style="background: hsl(43 53% 54% / 0.12);"></div><div class="name">--border-gold-subtle /12%</div><div class="label">Default card border</div></div>
+  <div class="item"><div class="line" style="background: hsl(43 53% 54% / 0.25);"></div><div class="name">--border-gold-hover /25%</div><div class="label">Hover state</div></div>
+  <div class="item"><div class="line" style="background: hsl(43 53% 54% / 0.4);"></div><div class="name">--border-gold-strong /40%</div><div class="label">Active / focus</div></div>
+  <div class="item"><div class="line" style="background: hsl(212 25% 18%);"></div><div class="name">--border-dark</div><div class="label">UI borders on dark</div></div>
+  <div class="item"><div class="line" style="height: 1px; background: linear-gradient(90deg, transparent, hsl(43 53% 54% / 0.25), transparent);"></div><div class="name">section-divider</div><div class="label">Gradient separator</div></div>
+  <div class="item"><div class="glow-demo" style="box-shadow: 0 0 20px hsl(43 53% 54% / 0.05);"></div><div class="name">--glow-gold-sm</div><div class="label">Card resting glow</div></div>
+  <div class="item"><div class="glow-demo" style="box-shadow: 0 0 40px hsl(43 53% 54% / 0.08);"></div><div class="name">--glow-gold-md</div><div class="label">Card hover glow</div></div>
+</div>
+</body></html>

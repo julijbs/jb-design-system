@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+</style><meta charset="UTF-8">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0C1F3A; font-family: 'Inter', system-ui, sans-serif; padding: 20px; }
+.grid { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.icon-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.icon-wrap { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: hsl(212 45% 13% / 0.6); border: 1px solid hsl(43 53% 54% / 0.12); border-radius: 8px; }
+.icon-label { font-size: 9px; color: hsl(215 16% 62%); text-align: center; }
+.hex-wrap { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; clip-path: polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%); background: hsl(43 53% 54% / 0.12); }
+</style></head>
+<body>
+<div class="grid" id="icons"></div>
+<script>
+const names = ['compass','target','trending-up','layers','shield','zap','arrow-right','check','star','users','bar-chart-2','globe'];
+const wrap = document.getElementById('icons');
+names.forEach(n => {
+  const item = document.createElement('div');
+  item.className = 'icon-item';
+  item.innerHTML = `<div class="icon-wrap"><i data-lucide="${n}" style="color:#C9A055;width:20px;height:20px;stroke-width:1.5;"></i></div><div class="icon-label">${n}</div>`;
+  wrap.appendChild(item);
+});
+// hex motif
+const hex = document.createElement('div');
+hex.className = 'icon-item';
+hex.innerHTML = `<div class="hex-wrap"><i data-lucide="compass" style="color:#C9A055;width:18px;height:18px;stroke-width:1.5;"></i></div><div class="icon-label">hex motif</div>`;
+wrap.appendChild(hex);
+lucide.createIcons();
+</script>
+</body></html>

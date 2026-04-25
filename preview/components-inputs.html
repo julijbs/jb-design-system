@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'DM Serif Display'; src:url('../fonts/DMSerifDisplay-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Regular.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-Medium.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-SemiBold.ttf') format('truetype'); font-weight:600; font-display:swap; }
+</style><meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0C1F3A; font-family: 'Inter', system-ui, sans-serif; padding: 24px 20px; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; align-items: flex-start; }
+.meta { font-size: 10px; color: hsl(215 16% 62%); margin-top: 6px; }
+</style></head>
+<body>
+<div class="row">
+  <div style="background:#122845;border:1px solid hsl(43 53% 54% / 0.12);border-radius:6px;padding:10px 14px;min-width:200px;">
+    <div style="font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#C9A055;margin-bottom:6px;">Nome completo</div>
+    <div style="font-size:0.875rem;color:hsl(40 20% 95%);">João Bernardo Silva</div>
+  </div>
+  <div class="meta">Input field — dark variant (default)</div>
+</div>
+<div class="row">
+  <div style="background:#122845;border:1px solid hsl(43 53% 54% / 0.35);border-radius:6px;padding:10px 14px;min-width:200px;box-shadow:0 0 20px hsl(43 53% 54% / 0.06);">
+    <div style="font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#C9A055;margin-bottom:6px;">E-mail</div>
+    <div style="font-size:0.875rem;color:hsl(40 20% 95%);">joao@empresa.com.br</div>
+  </div>
+  <div class="meta">Input focus — gold border + glow</div>
+</div>
+<div class="row">
+  <div style="background:#122845;border:1px solid hsl(212 25% 18%);border-radius:6px;padding:10px 14px;min-width:200px;">
+    <div style="font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:hsl(215 16% 62%);margin-bottom:6px;">Empresa</div>
+    <div style="font-size:0.875rem;color:hsl(215 16% 62%);">Placeholder...</div>
+  </div>
+  <div class="meta">Input — muted / placeholder state</div>
+</div>
+</body></html>
