@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   JB Digital Consulting — Design System CSS
+   Source of truth for all JB products
+   ───────────────────────────────────────── */
+
+@layer base {
+  :root {
+    /* Core palette */
+    --background: 212 58% 10%;       /* deep navy */
+    --foreground: 40 20% 95%;        /* off-white */
+
+    --card: 212 45% 13%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 212 45% 13%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 43 53% 54%;           /* gold */
+    --primary-foreground: 212 58% 10%;
+
+    --secondary: 212 30% 17%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 212 20% 20%;
+    --muted-foreground: 215 16% 62%;
+
+    --accent: 40 45% 62%;            /* gold light */
+    --accent-foreground: 212 58% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 212 25% 18%;
+    --input: 212 25% 22%;
+    --ring: 43 53% 54%;
+
+    --radius: 0.5rem;
+
+    /* Brand-specific tokens */
+    --gold: hsl(43 53% 54%);
+    --gold-light: hsl(40 45% 62%);
+    --navy: hsl(212 58% 10%);
+    --off-white: hsl(40 20% 95%);
+
+    --gold-gradient: linear-gradient(135deg, hsl(43 53% 54%), hsl(40 45% 62%));
+    --navy-gradient: linear-gradient(180deg, hsl(212 58% 10%) 0%, hsl(212 45% 13%) 100%);
+    --section-border: hsl(43 53% 54% / 0.1);
+    --card-glow: 0 0 40px hsl(43 53% 54% / 0.05);
+  }
+
+  /* Light section override — use class="light-section" */
+  .light-section {
+    --background: 40 20% 95%;
+    --foreground: 212 58% 10%;
+    --primary: 43 53% 54%;
+    --primary-foreground: 212 58% 10%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+
+  /* Overline / label style */
+  .label-caps {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(43 53% 54%);
+  }
+}
+
+@layer utilities {
+  /* ── Text ── */
+  .gold-text {
+    color: hsl(43 53% 54%);
+  }
+
+  .gold-gradient-text {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Backgrounds ── */
+  .gold-gradient-bg {
+    background: var(--gold-gradient);
+  }
+
+  .navy-bg {
+    background: hsl(212 58% 10%);
+  }
+
+  /* ── Cards ── */
+  .glass-card {
+    background: hsl(212 45% 13% / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(43 53% 54% / 0.12);
+    box-shadow: var(--card-glow);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    border-color: hsl(43 53% 54% / 0.25);
+    box-shadow: 0 0 60px hsl(43 53% 54% / 0.08);
+  }
+
+  /* ── Layout ── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(43 53% 54% / 0.2), transparent);
+  }
+
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  /* ── Buttons ── */
+  .btn-gold {
+    background: hsl(43 53% 54%);
+    color: hsl(212 58% 10%);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+  .btn-gold:hover {
+    background: hsl(40 45% 62%);
+  }
+
+  .btn-gold-outline {
+    background: transparent;
+    color: hsl(43 53% 54%);
+    border: 1px solid hsl(43 53% 54%);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    padding: 12px 28px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  .btn-gold-outline:hover {
+    background: hsl(43 53% 54% / 0.08);
+  }
+}
